@@ -1,7 +1,6 @@
-from tensorflow.keras import datasets
 from tensorflow.keras.preprocessing.sequence import pad_sequences
 import constants as con
-from tensorflow.keras import Sequential, layers, optimizers
+from tensorflow.keras import Sequential, layers, optimizers, datasets
 from tensorflow import nn
 
 print("Program Started")
