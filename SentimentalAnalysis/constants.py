@@ -1,4 +1,3 @@
-
 # global constants
 embedding_dim = 16
 max_length = 256

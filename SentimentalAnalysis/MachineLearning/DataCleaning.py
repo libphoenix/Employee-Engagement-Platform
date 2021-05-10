@@ -22,7 +22,7 @@ def remove_url_punctuation_stopwords(text):
 
         return text
     except:
-        print("failed - "+str(text))
+        print(str(text))
 
 
 def clean_and_load(file_path, data_type):

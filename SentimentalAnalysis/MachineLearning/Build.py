@@ -1,5 +1,5 @@
 from tensorflow.keras.preprocessing.sequence import pad_sequences
-import constants as con
+from ..constants import *
 from tensorflow.keras import Sequential, layers, optimizers, datasets
 from tensorflow import nn
 
