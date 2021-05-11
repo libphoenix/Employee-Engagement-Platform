@@ -1,13 +1,12 @@
 import pandas as pd
 import re 
 import string
-import nltk
+# import nltk
 
-nltk.download('stopwords')
-from nltk.corpus import stopwords
+# nltk.download('stopwords')
+# from nltk.corpus import stopwords
+# stop = set(stopwords.words("english"))
 
-
-stop = set(stopwords.words("english"))
 
 def remove_url_punctuation_stopwords(text):
     try:
@@ -17,8 +16,8 @@ def remove_url_punctuation_stopwords(text):
         translator = str.maketrans("","",string.punctuation)
         text = text.translate(translator)
 
-        filtered_words = [word.lower() for word in text.split() if word.lower() not in stop]
-        text = " ".join(filtered_words)
+        # filtered_words = [word.lower() for word in text.split() if word.lower() not in stop]
+        # text = " ".join(filtered_words)
 
         return text
     except:

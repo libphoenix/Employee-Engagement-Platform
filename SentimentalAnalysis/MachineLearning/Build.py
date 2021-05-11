@@ -1,76 +1,77 @@
 from tensorflow.keras.preprocessing.sequence import pad_sequences
-from ..constants import *
+import constants as con
 from tensorflow.keras import Sequential, layers, optimizers, datasets
 from tensorflow import nn
 
 print("Program Started")
 
 
-# getting data from keras
-print("Getting data from keras...")
-(train_data, train_labels), (test_data, test_lables) = datasets.imdb.load_data(num_words = con.vocab_size)
+def train_model():
+    # getting data from keras
+    print("Getting data from keras...")
+    (train_data, train_labels), (test_data, test_lables) = datasets.imdb.load_data(num_words = con.vocab_size)
 
-# word index 
+    # word index 
 
-word_index = datasets.imdb.get_word_index()
+    word_index = datasets.imdb.get_word_index()
 
-word_index = {k: (v+ 3) for k,v in word_index.items()}
-word_index["<PAD>"] = 0 
-word_index["<START>"] = 1
-word_index["<UNK>"] = 2 # unknown
-word_index["<UNUSED>"] = 3
+    word_index = {k: (v+ 3) for k,v in word_index.items()}
+    word_index["<PAD>"] = 0 
+    word_index["<START>"] = 1
+    word_index["<UNK>"] = 2 # unknown
+    word_index["<UNUSED>"] = 3
 
-print(".... done")
+    print(".... done")
 
-# Pre-processing 
-print("Preprocessing started....")
-train_data = pad_sequences(train_data, 
-                            value = word_index["<PAD>"], 
-                            padding = 'post', 
-                            maxlen = con.max_length )
+    # Pre-processing 
+    print("Preprocessing started....")
+    train_data = pad_sequences(train_data, 
+                                value = word_index["<PAD>"], 
+                                padding = 'post', 
+                                maxlen = con.max_length )
 
-test_data = pad_sequences(test_data,
-                            value = word_index["<PAD>"],
-                            padding = 'post',
-                            maxlen = con.max_length )
+    test_data = pad_sequences(test_data,
+                                value = word_index["<PAD>"],
+                                padding = 'post',
+                                maxlen = con.max_length )
 
-print(".... done")
+    print(".... done")
 
-print("Bulding model....")
+    print("Bulding model....")
 
-model = Sequential()
-model.add(layers.Embedding(con.vocab_size, 16))
-model.add(layers.GlobalAveragePooling1D())
-model.add(layers.Dense(16, activation = nn.relu))
-model.add(layers.Dense(1, activation = nn.sigmoid))
+    model = Sequential()
+    model.add(layers.Embedding(con.vocab_size, 32))
+    model.add(layers.GlobalAveragePooling1D())
+    model.add(layers.Dense(32, activation = nn.relu))
+    model.add(layers.Dense(1, activation = nn.sigmoid))
 
-print(model.summary())
+    print(model.summary())
 
-model.compile(optimizer = optimizers.Adam(), 
-                loss = 'binary_crossentropy',
-                metrics = ['accuracy'])
-print("building done")
+    model.compile(optimizer = optimizers.Adam(), 
+                    loss = 'binary_crossentropy',
+                    metrics = ['accuracy'])
+    print("building done")
 
-x_val = train_data[:con.validation]
-partial_x_train = train_data[con.validation:]
+    x_val = train_data[:con.validation]
+    partial_x_train = train_data[con.validation:]
 
-y_val = train_labels[:con.validation]
-partial_y_train = train_labels[con.validation:]
+    y_val = train_labels[:con.validation]
+    partial_y_train = train_labels[con.validation:]
 
-input("Press any key to train model")
+    input("Press any key to train model")
 
-model.fit(partial_x_train, 
-            partial_y_train, 
-            epochs = con.num_epochs, 
-            batch_size = 512,
-            validation_data = (x_val, y_val))
+    model.fit(partial_x_train, 
+                partial_y_train, 
+                epochs = con.num_epochs, 
+                batch_size = 512,
+                validation_data = (x_val, y_val))
 
-model.save("trained_model")
+    model.save("trained_model")
 
-print("training done")
-print("evaluating model")
-res = model.evaluate(test_data, test_lables)
-print(res)
+    print("training done")
+    print("evaluating model")
+    res = model.evaluate(test_data, test_lables)
+    print(res)
 
 # from DataCleaning import clean_and_load
 # import pandas as pd
