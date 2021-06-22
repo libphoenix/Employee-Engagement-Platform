@@ -1,3 +1,5 @@
+from sys import argv
+import sys
 from PyQt5.QtWidgets import QMainWindow, QLineEdit, QPushButton, QLabel, QComboBox
 from PyQt5.QtGui import QIntValidator
 from PyQt5.QtCore import pyqtSlot
@@ -196,9 +198,9 @@ class App(QMainWindow):
 		data.append(int(self.salaryBox.text()))
 		data = [data]
 		value = list()
-		if useRandomClassifer:
+		if sys.argv[2] == "RF":
 			value = Model.PredictRandomForest(np.array(data, dtype=int))
-		elif useNeuralNetwork:
+		elif sys.argv[2] == "NN":
 			value = Model.PredictNeuralNetwork(np.array(data, dtype=int))
 		
 		font = self.font()
