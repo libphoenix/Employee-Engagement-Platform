@@ -195,7 +195,11 @@ class App(QMainWindow):
 		data.append(int(self.certificateBox.text()))
 		data.append(int(self.salaryBox.text()))
 		data = [data]
-		value = Model.Predict(np.array(data, dtype=int))
+		value = list()
+		if useRandomClassifer:
+			value = Model.PredictRandomForest(np.array(data, dtype=int))
+		elif useNeuralNetwork:
+			value = Model.PredictNeuralNetwork(np.array(data, dtype=int))
 		
 		font = self.font()
 		font.setBold(True)

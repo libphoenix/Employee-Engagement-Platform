@@ -41,3 +41,8 @@ class OnSite(enum.Enum):
 
 data_path = "Data/EmployeeIndex.csv"
 split = 0.8
+
+# update to change the algorithm 
+# Note - only one below value must be true
+useRandomClassifer = True
+useNeuralNetwork = False
