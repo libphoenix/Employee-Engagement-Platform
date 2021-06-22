@@ -38,7 +38,6 @@ def TrainNeuralNetwork():
 
 
 def TrainRandomForest():
-	print("Random Forest Classifier")
 	from sklearn.ensemble import RandomForestClassifier
 	data = pd.read_csv(os.getcwd() + "/" + data_path )
 	lables = data.iloc[: , -1:]
@@ -62,6 +61,11 @@ def TrainRandomForest():
 	print("Random forest Accurucy = ", metrics.accuracy_score(test_lable, testPredction))
 
 	pickle.dump(model, open("src/Brain/model.sav",'wb'))
+
+	print("Feature importance")
+	feature_list = list(input.columns)
+	feature_imps = pd.Series(model.feature_importances_, index=feature_list).sort_values(ascending=False)
+	print(feature_imps)
 
 
 
