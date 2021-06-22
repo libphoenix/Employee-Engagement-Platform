@@ -4,3 +4,4 @@ tensorflow
 pandas
 json
 sklearn
+pickle5
