@@ -9,6 +9,7 @@ from tensorflow.keras import models
 import pickle
 
 def TrainNeuralNetwork():
+	print("Neural Network")
 	data = pd.read_csv(os.getcwd() + "/" + data_path )
 	lables = data.iloc[: , -1:]
 	input = data.iloc[:, :-1]
