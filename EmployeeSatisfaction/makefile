@@ -13,3 +13,6 @@ trainNN:
 c-All:
 	# Compilling all files 
 	python3 -m compileall .
+predictL:
+	# Predict large data
+	python3 src/main.py predict RF

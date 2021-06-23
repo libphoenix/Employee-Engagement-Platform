@@ -20,4 +20,9 @@ def UpdateData():
 	del(data["emp_id"])
 	data.to_csv(os.getcwd()+"/Data/"+"data.csv",index=False)
 
+def displayStats():
+	data = pd.read_csv(os.getcwd() + '/' + data_path)
+	
+	print(pd.unique(data["satisfied"]))
+
 

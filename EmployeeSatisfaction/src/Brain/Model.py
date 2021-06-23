@@ -77,3 +77,13 @@ def PredictNeuralNetwork(data):
 def PredictRandomForest(data):
 	model = pickle.load(open('src/Brain/model.sav', 'rb'))
 	return model.predict(data)
+
+
+def PredictLargeDataRandomForest():
+	data = pd.read_csv("Data/NewData.csv")
+	test_input = data.iloc[:, :11]
+
+	res = PredictRandomForest(test_input)
+	data["satisfied"] = res 
+	data.to_csv(os.getcwd()+"/Data/"+"PredictedData.csv",index=False)
+	print(data.nunique())
