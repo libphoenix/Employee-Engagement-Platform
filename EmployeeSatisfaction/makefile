@@ -16,3 +16,6 @@ c-All:
 predictL:
 	# Predict large data
 	python3 src/main.py predict RF
+stats:
+	# display statistics
+	python3 src/main.py stats

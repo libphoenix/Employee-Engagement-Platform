@@ -21,7 +21,4 @@ elif value == "predict":
 		Brain.Model.PredictLargeDataRandomForest()
 elif value == "stats":
 	Stats.displayStats()
-
-
-
-
+	

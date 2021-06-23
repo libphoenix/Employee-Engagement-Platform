@@ -4,3 +4,4 @@ tensorflow
 pandas
 sklearn
 pickle5
+matplotlib

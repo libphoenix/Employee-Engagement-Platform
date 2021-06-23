@@ -1,4 +1,4 @@
-age,Dept,location,education,recruitment_type,job_level,rating,onsite,awards,Certification,Salary,Age in Company,Last  Hike,Weight in Kgs.,satisfied
+age,Dept,location,education,recruitment_type,job_level,rating,onsite,awards,Certification,Salary,Age in Company,Hike,Weight,satisfied
 55.98,1,1,2,1,1,1,1,0,0,81323,0.02,13,69,1
 25.19,2,1,1,2,2,3,0,1,0,169367,3.54,15,59,0
 41.43,1,1,2,1,2,4,1,9,0,142688,12.85,30,74,1

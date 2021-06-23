@@ -39,5 +39,5 @@ class OnSite(enum.Enum):
 	Yes = 1
 	No = 0
 
-data_path = "Data/EmployeeIndex.csv"
+data_path = "Data/PredictedData.csv"
 split = 0.8
