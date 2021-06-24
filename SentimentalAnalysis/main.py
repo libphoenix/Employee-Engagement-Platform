@@ -1,9 +1,10 @@
+import os
 import sys
+sys.path.append(os.path.dirname(os.path.dirname(os.path.realpath(__file__))))
 from PyQt5.QtWidgets import QApplication
-from MachineLearning.Predictor import predict
-from MachineLearning.Build import train_model
-
-from UI.Interface import App
+from SentimentalAnalysis.MachineLearning.Predictor import predict
+from SentimentalAnalysis.MachineLearning.Build import train_model
+from SentimentalAnalysis.UI.Interface import App
 
 
 value = sys.argv[1]

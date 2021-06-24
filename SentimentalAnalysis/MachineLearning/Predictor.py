@@ -1,7 +1,7 @@
 from tensorflow.keras import models
 from tensorflow.keras.preprocessing.sequence import pad_sequences
-import constants as con
-from MachineLearning.DataCleaning import remove_url_punctuation_stopwords
+import SentimentalAnalysis.constants as con
+from SentimentalAnalysis.MachineLearning.DataCleaning import remove_url_punctuation_stopwords
 import json
 import numpy as np
 

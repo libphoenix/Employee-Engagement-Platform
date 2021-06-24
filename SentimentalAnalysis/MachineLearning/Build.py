@@ -1,9 +1,7 @@
 from tensorflow.keras.preprocessing.sequence import pad_sequences
-import constants as con
+import SentimentalAnalysis.constants as con
 from tensorflow.keras import Sequential, layers, optimizers, datasets
 from tensorflow import nn
-
-print("Program Started")
 
 
 def train_model():

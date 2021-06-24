@@ -2,7 +2,7 @@ import sys
 from PyQt5.QtWidgets import QMainWindow, QTextEdit, QPushButton, QLabel
 from PyQt5.QtGui import QIcon
 from PyQt5.QtCore import pyqtSlot
-from MachineLearning.Predictor import predict
+from SentimentalAnalysis.MachineLearning.Predictor import predict
 
 class App(QMainWindow):
     def __init__(self):
@@ -37,5 +37,14 @@ class App(QMainWindow):
     def onClick(self):
         textboxValue = self.textbox.toPlainText()
         val = predict(textboxValue)
-        self.label.setText("Sentiment - "+str(val[0]))
+        font = self.font()
+        font.setBold(True)
+        self.label.setFont(font)
+        if float(val[0]) >= 0.5:
+            self.label.setText("Sentiment - Satisfied")
+            self.label.setStyleSheet("color : green")
+        else:
+            self.label.setText("Sentiment - Not Satisfied")
+            self.label.setStyleSheet("color : red")
+
         self.textbox.setText("")
